@@ -1,21 +1,27 @@
 let initialState = {
-  username: '',
-  hairColor: ''
+  haircolor: 'blue',
+  eyecolor: 'blue',
+  username: 'orangeluver'
 }
 
+const NEW_USERNAME = 'NEW_USERNAME';
+
 export default function reducer(state = initialState, action) {
+  console.log('reducer', action)
   switch (action.type) {
-    case 'USERNAME_INPUT':
-      return Object.assign({}, state, {username: action.payload})
+    case NEW_USERNAME:
+      console.log('new username case', action)
+      return {...state, username: action.payload};
     default: 
       return state; 
   }
 }
 
-
-export function updateUsername(pkg) {
+export function updateUsername(newValue, something) {
+  console.log("action", newValue)
   return {
-    type: 'USERNAME_INPUT',
-    payload: pkg
+    type: NEW_USERNAME,
+    payload: newValue
   }
 }
+updateUsername(null, true)
